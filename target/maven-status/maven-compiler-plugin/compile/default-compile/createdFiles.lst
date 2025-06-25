@@ -1,0 +1,17 @@
+io/github/educastrob/arquiteturaspring/montadora/montadora/api/TesteFabricaController.class
+io/github/educastrob/arquiteturaspring/montadora/montadora/api/Turbo.class
+io/github/educastrob/arquiteturaspring/montadora/montadora/CarroStatus.class
+io/github/educastrob/arquiteturaspring/montadora/montadora/api/Eletrico.class
+io/github/educastrob/arquiteturaspring/montadora/montadora/Motor.class
+io/github/educastrob/arquiteturaspring/montadora/montadora/Montadora.class
+io/github/educastrob/arquiteturaspring/montadora/montadora/HondaHRV.class
+io/github/educastrob/arquiteturaspring/montadora/MontadoraApplication.class
+io/github/educastrob/arquiteturaspring/montadora/montadora/Chave.class
+io/github/educastrob/arquiteturaspring/montadora/montadora/Carro.class
+io/github/educastrob/arquiteturaspring/montadora/todos/TodoEntity.class
+io/github/educastrob/arquiteturaspring/montadora/montadora/configuration/MontadoraConfiguration.class
+io/github/educastrob/arquiteturaspring/montadora/montadora/api/Aspirado.class
+io/github/educastrob/arquiteturaspring/montadora/montadora/TipoMotor.class
+io/github/educastrob/arquiteturaspring/montadora/todos/TodoController.class
+io/github/educastrob/arquiteturaspring/montadora/todos/TodoService.class
+io/github/educastrob/arquiteturaspring/montadora/todos/TodoRepository.class
