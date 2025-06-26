@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
-@Lazy(false)
+// @Lazy(false)
 @Component
 @Scope(BeanDefinition.SCOPE_SINGLETON)
 //@Scope(WebApplicationContext.SCOPE_APPLICATION)
@@ -20,6 +20,9 @@ public class BeanGerenciado {
 
     @Autowired
     private TodoValidator validator;
+
+    @Autowired
+    private AppProperties appProperties;
 
     @Autowired
     public BeanGerenciado(TodoValidator validator) {
