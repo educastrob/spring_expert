@@ -1,5 +1,5 @@
 # Check port:
-netstat -aof | findstr 5432
+netstat -aof | findstr 543
 
 # Create network:
 docker create network library-network
