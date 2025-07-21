@@ -5,7 +5,6 @@ import io.github.educastrob.libraryapi.model.GeneroLivro;
 import io.github.educastrob.libraryapi.model.Livro;
 import io.github.educastrob.libraryapi.repository.AutorRepository;
 import io.github.educastrob.libraryapi.repository.LivroRepository;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +13,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
-@Slf4j
 @Service
 public class TransacaoService {
 
