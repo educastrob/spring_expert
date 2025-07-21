@@ -3,10 +3,13 @@ package io.github.educastrob.libraryapi.controller.dto;
 import io.github.educastrob.libraryapi.model.Autor;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
-public record AutorDTO(String nome,
-                       LocalDate dataNascimento,
-                       String nacionalidade) {
+public record AutorDTO(
+        UUID id,
+        String nome,
+        LocalDate dataNascimento,
+        String nacionalidade) {
 
     public Autor mapearParaAutor() {
         Autor autor = new Autor();
