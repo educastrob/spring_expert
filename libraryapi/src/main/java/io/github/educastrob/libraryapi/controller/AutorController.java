@@ -2,15 +2,16 @@ package io.github.educastrob.libraryapi.controller;
 
 import io.github.educastrob.libraryapi.controller.dto.AutorDTO;
 import io.github.educastrob.libraryapi.model.Autor;
-import io.github.educastrob.libraryapi.repository.AutorRepository;
 import io.github.educastrob.libraryapi.service.AutorService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 
 @RestController
 @RequestMapping("autores")
@@ -24,10 +25,18 @@ public class AutorController {
     }
 
     @PostMapping
-    public ResponseEntity salvar(@RequestBody AutorDTO autor) {
+    public ResponseEntity<Void> salvar(@RequestBody AutorDTO autor) {
         Autor autorEntidade = autor.mapearParaAutor();
         service.salvar(autorEntidade);
-        return new ResponseEntity("Autor salvo com sucesso! " + autor, HttpStatus.CREATED);
+
+        // http://localhost:8080/autores/783a4568-a6fa-40fc-843a-06ab84871b12
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(autorEntidade.getId())
+                .toUri();
+
+        return ResponseEntity.created(location).build();
     }
 
 }
