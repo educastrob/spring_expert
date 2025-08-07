@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 @RequestMapping("autores")
 @RequiredArgsConstructor
 // http://localhost:8080/autores
-public class AutorController {
+public class AutorController implements GenericController {
 
     private final AutorService service;
     private final AutorMapper mapper;
@@ -36,14 +36,7 @@ public class AutorController {
         try {
             Autor autorEntidade = mapper.toEntity(dto);
             service.salvar(autorEntidade);
-
-            // http://localhost:8080/autores/783a4568-a6fa-40fc-843a-06ab84871b12
-            URI location = ServletUriComponentsBuilder
-                    .fromCurrentRequest()
-                    .path("/{id}")
-                    .buildAndExpand(autorEntidade.getId())
-                    .toUri();
-
+            URI location = gerarHeaderLocation(autorEntidade.getId());
             return ResponseEntity.created(location).build();
         } catch (RegistroDuplicadoException e) {
             var erroDTO = ErroResposta.conflito(e.getMessage());
@@ -86,8 +79,8 @@ public class AutorController {
         List<Autor> resultado = service.pesquisaByExample(nome, nacionalidade);
         List<AutorDTO> lista = resultado
                 .stream()
-                .map(autor -> mapper.toDTO(autor)
-                ).collect(Collectors.toList());
+                .map(mapper::toDTO)
+                .collect(Collectors.toList());
         return ResponseEntity.ok(lista);
     }
 
