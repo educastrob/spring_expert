@@ -3,6 +3,7 @@ package io.github.educastrob.libraryapi.service;
 import io.github.educastrob.libraryapi.model.GeneroLivro;
 import io.github.educastrob.libraryapi.model.Livro;
 import io.github.educastrob.libraryapi.repository.LivroRepository;
+import io.github.educastrob.libraryapi.validator.LivroValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Page;
@@ -22,6 +23,9 @@ public class LivroService {
 
     @Autowired
     private final LivroRepository repository;
+
+    @Autowired
+    private final LivroValidator validator;
 
     public Livro salvar(Livro livro) {
         return repository.save(livro);
@@ -82,4 +86,12 @@ public class LivroService {
         return repository.findAll(specs, pageRequest);
     }
 
+    public void atualizar(Livro livro) {
+        if(livro.getId() == null){
+            throw new IllegalArgumentException("Para atualizar, é necessário que o livro já esteja salvo na base.");
+        }
+
+        validator.validar(livro);
+        repository.save(livro);
+    }
 }
