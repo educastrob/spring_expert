@@ -3,8 +3,8 @@ package io.github.educastrob.libraryapi.repository;
 import io.github.educastrob.libraryapi.model.Autor;
 import io.github.educastrob.libraryapi.model.GeneroLivro;
 import io.github.educastrob.libraryapi.model.Livro;
-import org.springframework.cglib.core.Local;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -15,7 +15,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
-public interface LivroRepository extends JpaRepository<Livro, UUID> {
+public interface LivroRepository extends JpaRepository<Livro, UUID>, JpaSpecificationExecutor<Livro> {
 
     // Query Method
     // select * from livro where id_autor = id;
@@ -79,5 +79,4 @@ public interface LivroRepository extends JpaRepository<Livro, UUID> {
     void updateDataPublicacao(LocalDate novaData);
 
     boolean existsByAutor(Autor autor);
-
 }
